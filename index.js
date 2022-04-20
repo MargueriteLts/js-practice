@@ -35,3 +35,12 @@ function greet(name, lastName) {
 
 greet('People', 'of the world');
 greet('You', 'bad bitch');
+
+function square(number) {
+  return number * number;
+}
+
+//let number = square(2);
+//console.log(number);
+
+console.log(square(2));
