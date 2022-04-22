@@ -108,3 +108,115 @@ function sum(a, b) {
   console.log(a + b);
 }
 sum(10, 22);
+
+
+let myGlobal = 10;
+
+function f1() {
+  oopsGlobal = 5; //apparement, vu qu'on a pas mis var (ou let) devant la variable, ca en fait une variable globale dans le projet et on peut la reutiliser
+}
+
+function f2 () {
+   let output = '';
+   if (myGlobal != 'undefined') {
+     output += 'My global is ' + myGlobal;
+   }
+   if (oopsGlobal != 'undefined') {
+     output += 'OopsGlobal is: ' + oopsGlobal;
+   }
+   console.log(output);
+ }
+
+f1();
+f2();
+
+let outwear = 'sweater';
+function outfit() {
+  let outwear = 'tshirt';
+  return outwear;
+}
+console.log(outwear);
+console.log(outfit());
+
+function plusthree(num) {
+  return num + 3;
+}
+console.log(plusthree(7));
+
+let result = 0;
+function operation(num) {
+  return num + 5;
+}
+result = operation(5);
+console.log(result)
+
+function next(arr, item) {
+  arr.push(item);
+  return arr.shift();
+}
+let myArrayy = [1,2,3,4,5];
+console.log(next(myArrayy, 6));
+console.log(JSON.stringify(myArrayy));
+
+function trueOrFalse(write) {
+  if (write) {
+    return 'Yes, true';
+  }
+  return 'No, false';
+}
+console.log(trueOrFalse(true));
+
+function testEqual(val) {
+  if (val == 12) {
+    return 'Equal';
+  }
+  return 'Not Equal';
+}
+console.log(testEqual(13));
+
+// 3 == 3 et 3 == '3' compare les valeurs et ca sera egal (string devient number)
+// mais 3 === '3' va comparer les types, et donc ca ne sera pas egal
+// de meme pour !==
+
+function comparison(val) {
+  if (val <= 20 && val >= 10) { //&& = and
+    return 'Ok';
+  }
+  return 'Not Ok';
+}
+console.log(comparison(15));
+
+function position(val) {
+  if (val < 10 || val > 20) { //   || = OR !!!!
+    return 'Outside';
+  }
+  return 'Inside';
+}
+console.log(position(15));
+
+
+// si c'est possible d'utiliser plusieurs if, pourquoi utiliser else if et else...???
+
+//comme dans python, l'ORDRE est IMPORTANT -> on commence par la "plus petite comparaison"
+
+let names = ['Hole-in-one!', 'Eagle', 'Birdie', 'Par', 'Bogey', 'Double Bogey', 'Train More!:p'];
+
+function golf(par, strokes) {
+  if (strokes == 1) {
+    return names[0]
+  } else if (strokes <= par - 2) {
+    return names[1]
+  } else if (strokes == par - 1) {
+    return names[2]
+  } else if (strokes == par) {
+    return names[3]
+  } else if (strokes == par + 1) {
+    return names[4]
+  } else if (strokes == par + 2) {
+    return names[5]
+  } else if (strokes >= par + 3) {
+    return names[6]
+  } else
+    return names[7]
+}
+console.log(golf(3, 8));
