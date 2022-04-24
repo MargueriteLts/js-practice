@@ -347,3 +347,23 @@ let myStorage = {
 };
 let gloveBoxContent = myStorage.car.inside['glove box'];
 console.log(gloveBoxContent);
+
+let myPlants = [
+  {
+    type: 'flowers',
+    lsit: [
+      'rose',
+      'tulip',
+      'dandelion'
+    ]
+  },
+  {
+    type: 'trees',
+    list: [
+      'fir',
+      'pine',
+      'birch'
+    ]
+  }
+];
+console.log(myPlants[1].list[1]);
