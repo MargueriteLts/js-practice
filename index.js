@@ -220,3 +220,130 @@ function golf(par, strokes) {
     return names[7]
 }
 console.log(golf(3, 8));
+
+function switchCase(val) {
+  let answer= ''; //default if nothing from the cases is passed
+  switch(val) {
+    case 1: //ici: si val === 1
+      answer = 'alpha';
+      break;
+    case 2:
+      answer = 'beta';
+      break;
+    case 3:
+      answer = 'gama';
+      break;
+    default: //??? a quoi sert le default si on peut mettre un msg au debut ???
+      answer = 'other';
+      break;
+  }
+  return answer;
+}
+console.log(switchCase(3));
+
+function switchCase2(val) {
+  let answer = '';
+  switch(val) {
+    case 1:
+    case 2:
+    case 3:
+      answer = 'first';
+      break;
+    case 4:
+    case 5:
+    case 6:
+      answer = 'second';
+      break;
+  }
+  return answer;
+}
+console.log(switchCase2(4));
+
+function isLess(a, b) {
+  return a < b; //pas besoin d'utiliser if else etc pour avoir une reponse true or false car tous les comparison operators return a boolean true or false answer !
+}
+
+let count = 0;
+function cc(card) {
+  switch(card) {
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+      count++;
+      break;
+    case 10:
+    case 'J':
+    case 'Q':
+    case 'K':
+    case 'A':
+      count--;
+      break;
+  }
+  let holdbet = 'hold'
+  if (count > 0) {
+    holdbet = 'bet';
+  }
+  return count + ' ' + holdbet;
+}
+cc(2); cc('K'); cc(10); cc('A'); //Je comprends pas commment tout ca est pris en compte dans la console.log final....???
+console.log(cc(4));
+
+let myDog = { //OBJECT
+  'name': 'Bob',
+  'Legs': 6,
+  'friends': ['Everything!'], // proprety is an array
+  'the tail': 1
+};
+let nameVal = myDog.name;
+let tailVal = myDog['the tail'];//brackets if the proprety has a space in it
+
+let testObj = {
+  16 : 'Montana',
+  19 : 'Unitas'
+};
+let playerNumber = 16;
+let player = testObj[playerNumber]; //player = Montana
+console.log(player);
+//testObj.29 = 'Team'; Not possible to add a property as number with dot notation
+
+function phineticLookup(val) {
+  let result = '';
+  let lookup = {
+    'alpha': 'Adams',
+    'bravo': 'Boston'
+  };
+  result = lookup[val];
+  return result;
+}
+
+let myObj = {
+  gift: 'pony', //pourquoi la on a pas mis de guillemets pour la property...????
+  pet: 'kitter'
+};
+function checkObj(prop) {
+  if (myObj.hasOwnProperty(prop)) {
+    return myObj[prop]
+  } else {
+    return 'Not Found'
+  }
+}
+console.log(checkObj('smthg'));
+
+//on peut mettre des obj {:}; dans un array var = [];
+//on peut avoir des nested objects
+
+let myStorage = {
+  'car': {
+    'inside': {
+      'glove box': 'maps',
+      'box': 'gloves'
+    }, //!!!attention a ne pas oublier virgule
+      'outside': {
+      'trunk': 'jack'
+    }
+  }
+};
+let gloveBoxContent = myStorage.car.inside['glove box'];
+console.log(gloveBoxContent);
