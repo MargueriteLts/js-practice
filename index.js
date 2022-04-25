@@ -367,3 +367,63 @@ let myPlants = [
   }
 ];
 console.log(myPlants[1].list[1]);
+
+let collection = {
+  '1': {
+    'album': 'nameofthealbum1',
+    'artist': 'nameofartist1',
+    'tracks': [
+      'track1',
+      'track2'
+    ]
+  },
+  '2': {
+    'album': 'nameofthealbum2',
+    'artist': 'nameofartist2'
+  }
+};
+function updateCollection(id, prop, value) {
+  if (value === '') {
+    delete collection[id][prop];
+  } else if (prop === 'tracks') {
+    collection[id][prop] = collection[id][prop] || [];
+    collection[id][prop].push(value);
+  } else {
+    collection[id][prop] = value;
+  }
+  return collection;
+}
+updateCollection(2, 'tracks', 'track1');
+console.log(updateCollection(1, 'tracks', 'track3'));
+
+let myArrayyy = [];
+let i = 0;
+while(i < 5) {
+  myArrayyy.push(i);
+  i++;
+}
+console.log(myArrayyy);
+
+let thisArray = [];
+for (let i = 5; i < 11; i++) {
+  thisArray.push(i);
+}
+console.log(thisArray);
+
+let myArr = [2, 3, 4, 5, 6];
+let total = 0
+for (let i = 0; i < myArr.length; i++) {
+  total += myArr[i];
+}
+console.log(total);
+
+function multiplyAll(arr) {
+  product = 1;
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr[i].length; j++) {
+      product *= arr[i][j];
+    }
+  }
+  return product;
+}
+console.log(multiplyAll([[1,2], [3,4], [5,6]]));
