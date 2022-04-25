@@ -427,3 +427,11 @@ function multiplyAll(arr) {
   return product;
 }
 console.log(multiplyAll([[1,2], [3,4], [5,6]]));
+
+let thisArrayy = [];
+let z = 10;
+do {
+  thisArrayy.push(z);
+  z++;
+} while (z < 5) //Le loop se produit au moins une fois car le while est apres
+console.log(i, thisArrayy);
