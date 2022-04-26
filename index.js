@@ -351,7 +351,7 @@ console.log(gloveBoxContent);
 let myPlants = [
   {
     type: 'flowers',
-    lsit: [
+    list: [
       'rose',
       'tulip',
       'dandelion'
@@ -435,3 +435,57 @@ do {
   z++;
 } while (z < 5) //Le loop se produit au moins une fois car le while est apres
 console.log(i, thisArrayy);
+
+let contacts = [
+  {
+    firstName: 'Akira', //??? je comprends pas si pour le nom des property il faut des guilemets ou passsss
+    lastName: 'Laine'
+  },
+  {
+    firstName: 'Luffy',
+    lastName: 'Monkey D.'
+  },
+  {
+    firstName: 'Harry',
+    lastName: 'Potter'
+  }
+];
+function lookUpProfil(name, prop) {
+  for (let i = 0; i < contacts.length; i++) {
+    if (name === contacts[i].firstName) {
+      return contacts[i][prop] || 'There is no such property :('
+    }
+  }
+  return 'There is no such name :('
+}
+console.log(lookUpProfil('Akira', 'hello'));
+
+//random rounded number (bc just math.random donne un chiffre entre 0 et 1 non-compris et math.floor round ce number)
+function randomWholeNb() {
+  return Math.floor(Math.random() * 10);//on va avoir un chiffre entre 0 et 9 compris
+}
+console.log(randomWholeNb());
+
+function randomRange(myMin, myMax) {
+  return Math.floor(Math.random() * (myMax - myMin + 1)) + myMin; //I understand the equation but I couldnt have thought about it myself....
+}
+console.log(randomRange(5, 15)); //??? il m'affiche 15 parfois, c'est normal...??
+
+function convertToInteger(str) {
+  //return parseInt(str);//transforme la string en numb
+  return parseInt(str, 2)//parce que en base 2
+}
+//convertToInteger('56');
+convertToInteger('101100');
+
+function checkEqual(a, b) {
+  return a === b ? true : false; //eventhough pour un tel resultat on peut juste ecrire: return a === b; et on aura true or false
+}
+checkEqual(1, 2);
+
+function checkSign(num) {
+  return num > 0 ? 'positiv' : num < 0 ? 'negativ' : 'zero'
+}
+console.log(checkSign(10));
+
+//ecrire 'use strict'; en haut du code ou de la fonction pour catcher des erreurs
