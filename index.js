@@ -489,3 +489,88 @@ function checkSign(num) {
 console.log(checkSign(10));
 
 //ecrire 'use strict'; en haut du code ou de la fonction pour catcher des erreurs
+
+function checkScope() {
+  "use struct";
+  let i = 'function scope'; //si on avait mis var a la place de let, la variable aurait eu le nom block scope partout
+  if (true) {
+    let i = 'block scope';//si let etait ecris que la, le deuxieme console.log n'aurait pas marche
+    console.log('Block scope i is: ', i);
+  }
+  console.log('function scope i is: ', i);
+  return i;
+}
+checkScope();
+
+//variable with const keyword cannot be reassigned
+//pour differencier ce type de variable, on l'ecrit en CAPITALES
+
+const s = [5, 7, 2];
+function editInPlace() {
+  'use strict';
+  //s = [2, 5, 7]; -> pas possible de changer directement le contenu de l'array, mais on peut changer ses elements un par un:
+  s[0] = 2;
+  s[1] = 5;
+  s[2] = 7;
+}
+editInPlace();
+console.log(s);
+
+//if we dont want an object to move/change: use Object.freeze(name_of_objectvariable);
+
+//Anonymuos function
+var magic = function() {
+  return new Date();
+};
+//We can write it in shorter way:
+var magic = () => {
+  return new Date(); //as we return only one value here, we can write it even shorter:
+};
+var magic = () => new Date();
+
+let myConcat = (arr1, arr2) => arr1.concat(arr2);
+console.log(myConcat([1, 2], [2, 4]));
+
+let increment = (function() {
+  return function increment(number, value = 1) {
+    return number + value;
+  };
+})(); // ??? je comprends pas bien la syntaxe ici :(((
+console.log(increment(5, 2));
+console.log(increment(5));
+
+const summ = (function() {
+  //return function sum(x, y, z) { // a la place de cette ligne on ecrit ...args dans sum:
+  return function summ(...args) {
+    //const args = [x, y, z];
+    return args.reduce((a, b) => a +b, 0);
+  };
+}) ();
+console.log(summ(1, 2, 3, 4));// avec les modifs qu'on a faites, on peut passer autant de valeur dans summ et ils seront mis dans l'array args
+
+let arr1 = ['jan', 'feb', 'mar'];
+let arr2;
+(function() {
+  //arr2 = arr1; //this is making our two arrays equal, but if we just want arr2 to equal arr1 and stay like that even if we change arr2:
+  arr2 = [...arr1]; //-> we are making a copy of the content of arr1 into arr2
+  arr1[0] = 'potato'
+})();
+console.log(arr2);
+console.log(arr1);
+
+//DESTRUCTURING assign element of element to own variable
+let localForecast = {
+  today: { min:72, max:83},
+  tomorrow: { min:73, max:84}
+};
+function getMaxOfTomorrow(forecast) {
+  'use strict';
+  let { tomorrow : { max : maxOfTomorrow}} = forecast;
+  return maxOfTomorrow;
+}
+console.log(getMaxOfTomorrow(localForecast));
+
+let [y, x] = [1, 2, 3, 4];
+console.log(y, x);
+let [k, l, , m] = [1, 2, 3, 4]; //virgule vide pour choisir quel element on assign a la variable
+console.log(k, l, m);
