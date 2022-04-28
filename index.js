@@ -574,3 +574,121 @@ let [y, x] = [1, 2, 3, 4];
 console.log(y, x);
 let [k, l, , m] = [1, 2, 3, 4]; //virgule vide pour choisir quel element on assign a la variable
 console.log(k, l, m);
+
+let f = 6, g = 8;
+(() => {
+  [f, g] = [g, f]
+})(); // je comprends pas les parentheses et quand placer la virgule
+console.log(f);
+console.log(g);
+
+let source = [1,2,3,4,5];
+function removeFirstTwo(list) {
+  let [ , , ...arr] = list; // enleve le 1er, puis le deuxieme, et mettre tout le reste dans la variable arr
+  return arr;
+}
+let arr = removeFirstTwo(source);
+console.log(arr);
+console.log(source);
+
+let stats = {
+  max: 56.78,
+  mode: 23,
+  min: -0.75,
+  average: 35
+};
+let half = (function() {
+  return function half({ max, min }) {
+    return (max + min) / 2.0;
+  };
+})();
+console.log(stats);
+console.log(half(stats));
+
+let resultt = {
+  succes: ['max-length', 'no-amd', 'prefer-arrow-functions'],
+  failure: ['no-var', 'var-on-top', 'linebreak'],
+  skipped: ['id-blacklist', 'no-dup-keys']
+};
+function makeList(arr) {
+  let resultDisplayArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    resultDisplayArray.push(`<li class='text-warning'>${arr[i]}</li>`)
+  }
+  return resultDisplayArray;
+}
+let resultDisplayArray = makeList(resultt.failure);
+console.log(resultDisplayArray);
+
+let createPerson = (name, age, gender) => {
+  return {
+    name: name,
+    age: age,
+    gender: gender
+  };
+};
+//IS THE SAME AS
+let createPerson2 = (name, age, gender) => ({ name, age, gender });
+console.log(createPerson2('John', '34', 'glitter'));
+
+let bicycle = {
+  gear: 2,
+  //setGear: function(newGear) {     on peut l'ecrire:
+  setGear(newGear) {
+    'use strict';
+    this.gear = newGear;
+  }
+};
+bicycle.setGear(3);
+console.log(bicycle.gear);
+
+//???????creating objects????????//
+let SpaceShuttle = function(targetPlanet){
+  this.targetPlanet = targetPlanet; //j'ai maybe rate quelque chose mais je comprends pas le delire ici, c'est quoi this et pq c'est egal a lui meme JE COMPRENDS PAS
+}
+let zeus = new SpaceShuttle('Jupiter');
+console.log(zeus.targetPlanet);
+//on peut ecrire ca autrement:
+class SpaceShuttle2 {
+  constructor(targetPlanet) {
+    this.targetPlanet = targetPlanet;
+  }
+}
+let zeus2 = new SpaceShuttle2('Jupiter');
+console.log(zeus2.targetPlanet);
+
+//GETTERS & SETTERS -------- ? I don't really understand what they are for...
+function makeClass() {
+  class Thermostat {
+    constructor(temp) {
+      this._temp = 5/9 * (temp - 32); //He said: "the word 'this' means this variable (temp) is only accessible within the class" & if start variable with underscore it means it's a private variable you can't acces outside the class
+    }
+    get temperature(){
+      return this._temp;
+    }
+    set temperature(updatedTemp){
+      this._temp = updatedTemp;
+    }
+  }
+  return Thermostat;
+}
+let Thermostat = makeClass();
+let thermos = new Thermostat(76);
+let temp = thermos.temperature;
+thermos.temperature = 26;
+temp = thermos.temperature;
+console.log(temp);
+
+//NOT WORKINNNNGGGGG -> @
+
+//import { capitalizeString } from './string_function' //I have this error on the console, idk what it means : Cannot use import statement outside a module
+//const cap = capitalizeString('Hello!');
+//console.log(cap)
+
+
+//import * as capitalizeStrings from './string_function';
+
+//export default function subtract(x,y) {return x - y;}
+
+//import subtract from 'math_functions';
+//subtract(7,4);
